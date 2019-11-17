@@ -9,21 +9,42 @@ import LoginScreen from '../screens/Login';
 import MeasurmentScreen from '../screens/Measurment';
 import NotesScreen from '../screens/Notes';
 import RegisterScreen from '../screens/Register';
-var t =1
+
+import { Platform, Dimensions} from 'react-native';
+import { createDrawerNavigator } from 'react-navigation-drawer';  
+const WIDTH = Dimensions.get('window').width;
+
+
+
 const navigator = createStackNavigator(
 {
 
     StartingPage:StartingPageScreen,
     Login: LoginScreen,
-    Dates: DatesMedicationScreen,
+    DatesMedication: DatesMedicationScreen,
     Profile: ProfileScreen,
-    //Login: LoginScreen,
+    
     Measurment: MeasurmentScreen,
     Notes: NotesScreen,
     Register: RegisterScreen
 });
 
-export default createAppContainer(navigator);
+const Drawer = createDrawerNavigator({
+  navigator,
+  Measurment: {
+      screen : MeasurmentScreen
+  },
+  DatesMedication: {
+      screen : DatesMedicationScreen
+  },
+  Notes: {
+      screen : NotesScreen
+  },
+  // DrawerConfig
+});
+const AppContainer = createAppContainer(Drawer);
+export default AppContainer;
+// export default createAppContainer(navigator);
 
 
 

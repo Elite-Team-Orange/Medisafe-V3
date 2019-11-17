@@ -1,18 +1,14 @@
 import React,{Component} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Path from './src/Components/path';
 import Navigator from './src/navigation/MedNavigation';
-import { TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 export default class App extends Component {
 
   render(){
     const localhost= Path.yasmin;
     console.log(localhost);
-    return (
-      // <View style={styles.container}>
-      //   <Text>Open </Text>
-      // </View>
+    return (    
       <Navigator/>
     );
   }

@@ -21,12 +21,15 @@ app.get("/", (req, res) => {
 });
 
 //=======================================GET DATA===============================================//
-// app.get("/showcase", (req, res) => {
-//   DB.getPlaces(result => {
-//     console.log("CALL BACK FROM SERVER");
-//     res.json(result);
-//   });
-// });
+
+app.post("/showdata", (req, res) => {
+  let box = req.body;
+  console.log('IDDDDDDDDDD :', box);
+  DB.getDate(result => {
+    console.log("CALL BACK FROM SERVER");
+    res.json(result);
+  }, box);
+});
 
 
 //===================================GET DATA BY ID==============================================//
@@ -51,24 +54,49 @@ app.post("/login", (req, res) => {
     res.json(repo);
   }, object);
 });
+app.post("/measurment", (req, res) => {
+  let box = req.body;
+  console.log("box", box);
+  DB.measurmentUser(x => {
+    console.log("Measurment in server");
+    res.json(x);
+  },box);
+});
+app.post("/notes", (req, res) => {
+  let object = req.body;
+  console.log('objecttttttt', object)
+  DB.getNotes(repo => {res.json(repo);}, object);
+});
 
-// app.post("/addPlace", (req, res) => {
-//   let inputs=req.body;
-//   console.log("BODY:", inputs);
-//   DB.addPlace(result => {
-//     console.log("CALL BACK FROM SERVER");
-//     res.json(result);
-//   }, inputs);
-// });
+app.post("/shownotes", (req, res) => {
+  let object = req.body;
+  console.log('objecttttttt', object)
+  DB.getAllNotes(repo => {res.json(repo);}, object);
+});
+app.post("/showDataMeas", (req, res) => {
+  let box = req.body;
+  console.log('showDataMeas :', box);
+  DB.getDate(result => {
+    console.log("CALL BACK FROM SERVER showDataMeas");
+    res.json(result);
+  }, box);
+});
 
-// app.post("/addData", (req, res) => {
-//   let inputs=req.body;
-//   console.log("BODY:", inputs);
-//   DB.addForm(result => {
-//     console.log("CALL BACK FROM SERVER");
-//     res.json(result);
-//   }, inputs);
-// });
+app.post("/medication", (req, res) => {
+  let object = req.body;
+  console.log('objectttttttttttttttt :', object);
+  DB.getMedic(repo => {
+    res.json(repo);
+  }, object);
+});
+app.post("/showdata", (req, res) => {
+  let box = req.body;
+  console.log('IDDDDDDDDDD :', box);
+  DB.getDate(result => {
+    console.log("CALL BACK FROM SERVER");
+    res.json(result);
+  }, box);
+});
 
 
 //===================================PORT LISTENING=============================================//
